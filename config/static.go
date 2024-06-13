@@ -7,6 +7,6 @@ import (
 func init() {
 	config := facades.Config()
 	config.Add("static", map[string]any{
-		"path": "./public",
+		"path": config.Env("STATIC_PATH", "./public"),
 	})
 }
