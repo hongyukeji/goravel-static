@@ -2,6 +2,8 @@ package static
 
 import (
 	"github.com/goravel/framework/contracts/foundation"
+	"github.com/goravel/framework/facades"
+	"github.com/hongyukeji/goravel-static/middleware"
 )
 
 const Binding = "static"
@@ -20,6 +22,8 @@ func (receiver *ServiceProvider) Register(app foundation.Application) {
 }
 
 func (receiver *ServiceProvider) Boot(app foundation.Application) {
+	// Add HTTP middleware
+	facades.Route().GlobalMiddleware(middleware.Static())
 
 	// 将包的配置文件发布到应用程序的 config 目录
 	app.Publishes("github.com/hongyukeji/goravel-static", map[string]string{

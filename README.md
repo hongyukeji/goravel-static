@@ -21,8 +21,22 @@ This is a directory standard, but you can change it if you like.
 go get -u github.com/hongyukeji/goravel-static
 ```
 
-2. Use middleware
+2. Use
 
+> 2.1注册服务和2.2中间件任选一种即可
+
+- 2.1：Register service provider
+```
+// config/app.go
+static "github.com/hongyukeji/goravel-static"
+
+"providers": []foundation.ServiceProvider{
+    ...
+    &static.ServiceProvider{},
+}
+```
+
+- 2.2：Use middleware
 ```
 // app/http/kernel.go
 import staticmiddleware "github.com/hongyukeji/goravel-static/middleware"
